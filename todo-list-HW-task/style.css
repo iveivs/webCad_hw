@@ -1,0 +1,9 @@
+.hidden {
+    display: none;
+}
+/* body {
+    background-color: #ccc;
+} */
+li {
+    list-style-type:  none;
+}
