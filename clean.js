@@ -1,12 +1,21 @@
-const a = 10
-function temp() {
-    console.log('test1');
-    if(a == 10) {
-        console.log('test2');
-        return
-    }
-    console.log('test3');
-    return
-}
-temp()
+const arr = [
+    {
+        id: 1,
+        task: "name"
+    },
+    {
+        id: 2,
+        task: "name"
+    },
+    {   
+        id: 3,
+        task: "name"
+    },
+]
+
+let tempArr = arr.filter(e => {
+    return e.id == 2
+})
+console.log(tempArr);
+// console.log(typeof arr);
 
