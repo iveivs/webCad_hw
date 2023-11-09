@@ -1,21 +1,8 @@
-const arr = [
-    {
-        id: 1,
-        task: "name"
-    },
-    {
-        id: 2,
-        task: "name"
-    },
-    {   
-        id: 3,
-        task: "name"
-    },
-]
+const locStorArr = []
+console.log(locStorArr.length);
+let id = locStorArr.length > 0 ? locStorArr[locStorArr.length - 1].id + 1 : 1
 
-let tempArr = arr.filter(e => {
-    return e.id == 2
-})
-console.log(tempArr);
-// console.log(typeof arr);
-
+const obj = {
+    id: id
+}
+console.log(obj);

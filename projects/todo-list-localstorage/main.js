@@ -3,8 +3,18 @@ var itemsList = document.getElementById("items");
 var filter = document.getElementById("filter");
 
 
-// Получаю массив из ЛС
-locStorArr = JSON.parse(localStorage.getItem('tasks'))
+// Получаю данные из ЛокСт(если там пусто, то чтоб не приходдил null мы запускаем следущую ф-ю renderLocalStorageData)
+const locStorArr = renderLocalStorageData()
+
+function renderLocalStorageData() {
+    const data = localStorage.getItem("tasks")
+    console.log(data);
+    if (data) {
+        return JSON.parse(data);
+    } else {
+        return []
+    }
+}
 
 // Перебераю массив для рендера
 function renderLocStor(arr){
