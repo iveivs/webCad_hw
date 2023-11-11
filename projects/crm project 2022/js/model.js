@@ -26,7 +26,10 @@ function checkLocalStorage() {
     }
 }
 
+let tempId = []
+
 export {
     addTask,
-    locStorArr
+    locStorArr,
+    tempId
 }

@@ -2,7 +2,6 @@ const elements = {
     tableWrapper: document.querySelector('#tbody'),
     productSelect: document.querySelector('#productSelect')
 }
-console.log(elements.productSelect);
 
 function renderTab(obj){
     const html = `
@@ -14,15 +13,17 @@ function renderTab(obj){
         <td>${obj.email}</td>
         <td>${obj.phone}</td>
         <td>
-            <div class="badge badge-pill badge-warning">${obj.status}</div>
+            <div class="badge badge-pill badge-danger">${obj.status}</div>
         </td>
         <td>
-            <a href="edit.html">Редактировать</a>
+            <a href="#">Редактировать</a>
         </td>
     </tr>
     `
     elements.tableWrapper.insertAdjacentHTML('afterbegin', html)
 }
+
+
 
 export {
     elements,
