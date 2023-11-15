@@ -10,12 +10,44 @@ function addTask(formData) {
         ...formData,
     }
     locStorArr.push(newObj)
-    saveToLocalStorage()
+    saveToLocalStorage(locStorArr)
 }
 
-function saveToLocalStorage() {
-    localStorage.setItem('userInfo', JSON.stringify(locStorArr))
+const filter = {
+    status: 'all',
+    product: 'all'
 }
+
+
+function changeFilter(props, value) {
+    filter[props] = value
+
+    return filter
+}
+
+function filterFilterRequest(filter) {
+    let filterRequest
+
+    if(filter.product !== 'all') {
+        filterRequest = locStorArr.filter((el) => el.product === filter.product)
+    } else {
+        filterRequest = [...locStorArr]
+    }
+    if(filter.status !== 'all') {
+        filterRequest = filterRequest.filter(el => el.status === filter.status)
+    }
+    return filterRequest
+}
+
+function saveToLocalStorage(arr) {
+    localStorage.setItem('userInfo', JSON.stringify(arr))
+}
+
+
+function getDataArrayLocalStorage() {
+    return JSON.parse(localStorage.getItem('userInfo'))
+}
+
 
 function checkLocalStorage() {
     const data = localStorage.getItem('userInfo')
@@ -26,10 +58,38 @@ function checkLocalStorage() {
     }
 }
 
-let tempId = []
+
+function findDataLocalStorage(id) {
+    // старый вариант
+    // let arrFromLS = JSON.parse(localStorage.getItem('userInfo'))
+    // let userInfo
+    // let filtered = arrFromLS.filter( e => {
+    //     if(e.id == id) {
+    //         userInfo = e
+    //     }
+    // })
+    // return userInfo
+
+    // оптимизированный вариант
+    return  locStorArr.find((e) => e.id == id)
+}
+
+function chengeDataLocalStorage(newUserInfo) {
+    let dataArr = getDataArrayLocalStorage()
+    dataArr.forEach((element, index )=> {
+        if(newUserInfo.id == element.id){
+            dataArr.splice(index, 1, newUserInfo)
+        }
+    saveToLocalStorage(dataArr)
+    });
+}
 
 export {
+    chengeDataLocalStorage,
+    findDataLocalStorage,
+    getDataArrayLocalStorage,
     addTask,
     locStorArr,
-    tempId
+    changeFilter,
+    filterFilterRequest
 }
