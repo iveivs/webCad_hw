@@ -1,1 +1,0 @@
-(()=>{"use strict";console.log("imported modul"),console.log("Testing import 110")})();
